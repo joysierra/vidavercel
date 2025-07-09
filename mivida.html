@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Sitio Web Personal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #444;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 1em;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    nav button:hover, nav button.active {
+      background-color: #666;
+    }
+
+    section {
+      display: none;
+      padding: 2em;
+      background-color: white;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .profile-img {
+      width: 150px;
+      border-radius: 50%;
+    }
+
+    .carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+    }
+
+    .carousel img {
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .content-box {
+      margin-top: 1em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1em;
+      background-color: #333;
+      color: white;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bienvenido a Mi Sitio Web Personal</h1>
+</header>
+
+<nav>
+  <button class="tab-button active" onclick="showTab('acerca')">Acerca de Mí</button>
+  <button class="tab-button" onclick="showTab('viajes')">Mis Viajes</button>
+  <button class="tab-button" onclick="showTab('experiencia')">Experiencia Laboral</button>
+  <button class="tab-button" onclick="showTab('estudios')">Mis Estudios</button>
+  <button class="tab-button" onclick="showTab('contacto')">Contáctanos</button>
+</nav>
+
+<!-- Acerca de mí -->
+<section id="acerca" class="active">
+  <img src="foto8.jpeg" alt="Mi Foto" class="profile-img">
+  <div class="content-box">
+    <h2>Hola, soy Joysen sierra</h2>
+    <p>Soy un apasionado de la tecnología, los viajes y el aprendizaje continuo. Me encanta desarrollar soluciones creativas a problemas complejos y colaborar con equipos multidisciplinarios.</p>
+    <ul>
+      <li><strong>Edad:</strong> 37 años</li>
+      <li><strong>Ciudad:</strong> Barranquilla</li>
+      <li><strong>Email:</strong> joysierra07@gmail.com</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Mis Viajes -->
+<section id="viajes">
+  <h2>Mis Viajes</h2>
+  <div class="carousel">
+    <button onclick="cambiarImagen(-1)">←</button>
+    <img id="imagenViaje" src="paseo1.jpeg" alt="Foto de viaje">
+    <button onclick="cambiarImagen(1)">→</button>
+  </div>
+</section>
+
+<!-- Experiencia Laboral -->
+<section id="experiencia">
+  <h2>Experiencia Laboral</h2>
+  <ul>
+    <li><strong>operario de planta puro pollo:</strong> area de despresado</li>
+    <li><strong>operador logistico price smart:</strong>surtir mercancia en steel para ventas </li>
+  </ul>
+</section>
+
+<!-- Mis Estudios -->
+<section id="estudios">
+  <h2>Mis Estudios Académicos</h2>
+  <ul>
+    <li><strong>desarrollador web enyoi</strong></li>
+    <li><strong>backed y fronend</strong></li>
+  </ul>
+</section>
+
+<!-- Contáctanos -->
+<section id="contacto">
+  <h2>Contáctame</h2>
+  <form>
+    <label>Nombre:<br><input type="text" name="nombre" required></label><br><br>
+    <label>Email:<br><input type="email" name="email" required></label><br><br>
+    <label>Mensaje:<br><textarea name="mensaje" rows="4" required></textarea></label><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <p></p>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('section');
+  const buttons = document.querySelectorAll('.tab-button');
+
+  function showTab(id) {
+    tabs.forEach(tab => tab.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // Carrusel de imágenes
+  const imagenes = ['viaje1.jpg', 'viaje2.jpg', 'viaje3.jpg'];
+  let indice = 0;
+
+  function cambiarImagen(direccion) {
+    indice = (indice + direccion + imagenes.length) % imagenes.length;
+    document.getElementById('imagenViaje').src = imagenes[indice];
+  }
+</script>
+
+</body>
+</html>
